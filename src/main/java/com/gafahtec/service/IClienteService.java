@@ -12,5 +12,7 @@ public interface IClienteService extends ICRUD<Cliente, Integer>{
 	Page<Cliente> listarPageable(Pageable pageable);
 	
 	public List<Cliente> listarOrderNombre();
+	
+	public boolean getPorNumeroDocumento(String numeroDocumento) ;
 
 }

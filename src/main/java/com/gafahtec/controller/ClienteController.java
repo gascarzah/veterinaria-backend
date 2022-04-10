@@ -51,6 +51,10 @@ public class ClienteController {
 	
 	@PostMapping
 	public ResponseEntity<Cliente> registrar(@Valid @RequestBody Cliente p) throws Exception{
+		var isRegistrado = iClienteService.getPorNumeroDocumento(p.getNumeroDocumento());
+		if(isRegistrado) {
+			throw new ModeloNotFoundException("numero de documento ya se encuentra registrado");
+		}
 		Cliente obj = iClienteService.registrar(p);
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getIdCliente()).toUri();
 		return ResponseEntity.created(location).build();

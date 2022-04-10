@@ -17,10 +17,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Servicio {
+public class Rol {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer idServicio;
-	private String descripcion;
+	private Integer idRol;
 	private String nombre;
 }

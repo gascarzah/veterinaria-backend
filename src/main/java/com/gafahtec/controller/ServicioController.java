@@ -5,6 +5,9 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -72,11 +75,11 @@ public class ServicioController {
 		return new ResponseEntity<Void>(HttpStatus.NO_CONTENT);
 	}
 	
-//	@GetMapping("/pageable")
-//	public ResponseEntity<Page<Servicio>> listarPageable(@PageableDefault(sort = "apellidoPaterno")Pageable pageable) throws Exception{			
-//		Page<Servicio> Servicios = iServicioService.listarPageable(pageable);
-//		return new ResponseEntity<Page<Servicio>>(Servicios, HttpStatus.OK);
-//	}
+	@GetMapping("/pageable")
+	public ResponseEntity<Page<Servicio>> listarPageable(@PageableDefault(sort = "nombre")Pageable pageable) throws Exception{			
+		Page<Servicio> Servicios = iServicioService.listarPageable(pageable);
+		return new ResponseEntity<Page<Servicio>>(Servicios, HttpStatus.OK);
+	}
 	
 //	@GetMapping
 //	public ResponseEntity<List<Servicio>> listarOrdenadoPorId() throws Exception{

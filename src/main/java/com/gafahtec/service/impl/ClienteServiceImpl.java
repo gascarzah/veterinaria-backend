@@ -2,6 +2,7 @@ package com.gafahtec.service.impl;
 
 import java.util.List;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -36,5 +37,14 @@ public class ClienteServiceImpl  extends CRUDImpl<Cliente, Integer>  implements 
 	public List<Cliente> listarOrderNombre() {		
 		return repo.findAll(Sort.by("apellidoPaterno"));
 	}
+	
+	public boolean getPorNumeroDocumento(String numeroDocumento) {
+		
+		List<Cliente> lista = repo.findByNumeroDocumento(numeroDocumento);
+		
+		return CollectionUtils.isNotEmpty(lista);
+		
+	}
 }
+
 
